@@ -1,0 +1,21 @@
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ (.*)$ /compras/index.php?url=$1
+
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    RewriteCond %{REQUEST_URI} ^system.*
+
+    RewriteRule ^(.*)$ compras/index.php/$1 [L]
+   
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ compras/index.php/$1 [L]
+
+    ErrorDocument 404 /index.php
+</IfModule>
